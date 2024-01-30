@@ -80,3 +80,28 @@ main {
     }
 
 }
+
+
+@media screen and (min-width: 330px) {
+    img {
+        width: 260px; 
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    a{
+        color: #6492f6
+    }
+
+    label {
+        font-size: 20px;
+    }
+
+
+  }
