@@ -6,6 +6,8 @@ const generatePDF = async (name) => {
          return res.arrayBuffer();
     });
 
+    // fetching the font into webste using promise function
+
     const exFont = await fetch("./Sanchez-Regular.ttf").then((res) => { 
         return res.arrayBuffer(); 
     });
@@ -19,9 +21,11 @@ const generatePDF = async (name) => {
     const pdfDoc = await PDFDocument.load(exBytes)
 
 
-    // const personalImg = await pdfDoc.embedjpg(exImg)
+    // let inputFile = document.getElementById("input-file");
 
-    // const jpgDims = personalImg.scale(0.5)
+    // const input = URL.createObjectURL(inputFile.index[0])
+
+
 
 
     pdfDoc.registerFontkit(fontkit);
@@ -32,6 +36,13 @@ const generatePDF = async (name) => {
     const pages = pdfDoc.getPages();
     const firstPg= pages[0]
 
+    // Fetch JPEG image
+    // const jpgUrl = 'https://pdf-lib.js.org/assets/cat_riding_unicorn.jpg';
+    const jpgImageBytes = await fetch("./person-shopping-online.jpg").then((res) => res.arrayBuffer());
+    
+    const jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+    const jpgDims = jpgImage.scale(0.30);
+
     firstPg.drawText(name,{
         x: 315,
         y: 265,
@@ -39,19 +50,21 @@ const generatePDF = async (name) => {
         size: 35,
         weight: 100,
         font: myFont
-    })
+    });
 
-    // // const pag = pdfDoc.addPage()
-    // firstPg.drawImage(personalImg,{
-    //     x: pages.getWidth() / 2 - jpgDims.width / 2,
-    //     y: pages.getHeight() / 2 - jpgDims.height / 2 + 250,
-    //     width: jpgDims.width,
-    //     height: jpgDims.height,
-    // })
+
+
+    firstPg.drawImage(jpgImage, {
+        x: firstPg.getWidth() / 2 - jpgDims.width / 2 + 330,
+        y: firstPg.getHeight() / 2 - jpgDims.height / 2 + 100,
+        width: jpgDims.width,
+        height: jpgDims.height,
+    });
+
 
     const uri = await pdfDoc.saveAsBase64({dataUri: true})
+    // window.open(uri)
 
-    window.open(uri)
 
     saveAs(uri, "Mayank_Mehar_cerficate.pdf", { autoBom:true });
 
@@ -81,8 +94,10 @@ Submitbutton.addEventListener("click",() => {
     //     userName.reportValidity();
     // }
     const val= inputname.value;
-    alert(val);
+    alert(val + "your certificate is downloaded check it thank for visit");
     generatePDF(val);
-    
 });
+
+
+// generatePDF("Mayank Mehar");
 
