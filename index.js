@@ -53,7 +53,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) =
 
     firstPg.drawText(Fathers_Name, {
         x: 405,
-        y: 270,
+        y: 274,
         // color: rgb(255,255,255),
         size: 35,
         weight: 500,
