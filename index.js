@@ -109,7 +109,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) =
     const { PDFDocument } = PDFLib;
 
     // Fetching the certificate into website
-    const exBytes = await fetch("./CMC_Certificate.pdf").then((res) => {
+    const exBytes = await fetch("./CMC_Certificate_latest.pdf").then((res) => {
         return res.arrayBuffer();
     });
 
@@ -138,7 +138,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) =
 
     // Embed uploaded image into the PDF document
     const uploadedImage = await pdfDoc.embedPng(uploadedImageBytes);
-    const uploadedImageDims = uploadedImage.scale(0.14);
+    const uploadedImageDims = uploadedImage.scale(0.15);
 
 
     const { degrees } = PDFLib;
