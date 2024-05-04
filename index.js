@@ -82,6 +82,8 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) =
         y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 280,
         width: uploadedImageDims.width,
         height: uploadedImageDims.height,
+        rotate: degrees(90), // Angle should be in radians, not degrees
+        rotateOrigin: [315, 265] // Adjust rotation center to the text position
     });
 
     const getname = document.querySelector("#name").value;
