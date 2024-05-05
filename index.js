@@ -105,7 +105,7 @@
 
 
 
-const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) => {    //uploadedImageBytes//
+const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedImageBytes) => {    //uploadedImageBytes//
     const { PDFDocument } = PDFLib;
 
     // Fetching the certificate into website
@@ -182,6 +182,17 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, uploadedImageBytes) =
         rotateOrigin: [315, 265] // Adjust rotation center to the text position
     });
 
+
+    firstPg.drawText(Awarded_To, {
+        x: 520,
+        y: 537,
+        size: 20,
+        weight: 100,
+        font: myFont,
+        rotate: degrees(90), // Angle should be in radians, not degrees
+        rotateOrigin: [315, 265] // Adjust rotation center to the text position
+    });
+
     
 
     firstPg.drawImage(uploadedImage, {
@@ -205,18 +216,20 @@ const submitButton = document.getElementById("submit");
 const inputName = document.querySelector("#name");
 const inputIssueDate = document.querySelector("#Issue_Date");
 const inputFathersName = document.querySelector("#Fathers_Name");
+const inputAwardedTo = document.querySelector("#Awarded_To");
 const inputImage = document.getElementById("image");
 
 submitButton.addEventListener("click", async () => {
     const name = inputName.value;
     const issuedate = inputIssueDate.value;
     const fathername = inputFathersName.value;
+    const awardedto = inputAwardedTo.value;
     const imageFile = inputImage.files[0];
     const imageBytes = await imageFile.arrayBuffer();
 
     if (name.trim() !== "" && issuedate.trim() !== "" && imageFile) {
         const imageBytes = await imageFile.arrayBuffer();
-        generatePDF(name, fathername, issuedate, imageBytes);
+        generatePDF(name, fathername, issuedate, awardedto, imageBytes);
         alert(name + ", your customized certificate is being generated. Please wait for the download to start.");
     } else {
         alert("Please enter your name, date and upload an image to generate the certificate.");
