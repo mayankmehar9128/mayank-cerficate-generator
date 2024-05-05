@@ -138,7 +138,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
 
     // Embed uploaded image into the PDF document
     const uploadedImage = await pdfDoc.embedPng(uploadedImageBytes);
-    const uploadedImageDims = uploadedImage.scale(0.15);
+    const uploadedImageDims = uploadedImage.scale(0.17);
 
 
     const { degrees } = PDFLib;
@@ -196,7 +196,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
     
 
     firstPg.drawImage(uploadedImage, {
-        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 120,
+        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 118,
         y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 280,
         width: uploadedImageDims.width,
         height: uploadedImageDims.height,
