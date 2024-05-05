@@ -187,11 +187,11 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
 
     // Dynamically calculate the x-position for center alignment
     const awardedToWidth = myFont.widthOfTextAtSize(Awarded_To, 16);
-    const awardedToX = (firstPg.getWidth() + awardedToWidth) / 2;
+    const awardedToX = (firstPg.getWidth() - awardedToWidth) / 2;
     
     firstPg.drawText(Awarded_To, {
         x: 259,
-        y: awardedToX +  -75,
+        y: awardedToX + 115,
         size: 16,
         weight: 100,
         font: myFont,
