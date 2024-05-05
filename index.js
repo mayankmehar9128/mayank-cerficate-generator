@@ -159,7 +159,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
 
 
     firstPg.drawText(Fathers_Name, {
-        x: 405,
+        x: 409,
         y: 274,
         // color: rgb(255,255,255),
         size: 35,
@@ -184,9 +184,9 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
 
 
     firstPg.drawText(Awarded_To, {
-        x: 520,
-        y: 537,
-        size: 20,
+        x: 259,
+        y: 350,
+        size: 16,
         weight: 100,
         font: myFont,
         rotate: degrees(90), // Angle should be in radians, not degrees
@@ -196,7 +196,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
     
 
     firstPg.drawImage(uploadedImage, {
-        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 110,
+        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 120,
         y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 280,
         width: uploadedImageDims.width,
         height: uploadedImageDims.height,
@@ -227,7 +227,7 @@ submitButton.addEventListener("click", async () => {
     const imageFile = inputImage.files[0];
     const imageBytes = await imageFile.arrayBuffer();
 
-    if (name.trim() !== "" && issuedate.trim() !== "" && imageFile) {
+    if (name.trim() !== "" && fathername.trim() !== "" && issuedate.trim() !== "" && awardedto.trim() !== "" && imageFile) {
         const imageBytes = await imageFile.arrayBuffer();
         generatePDF(name, fathername, issuedate, awardedto, imageBytes);
         alert(name + ", your customized certificate is being generated. Please wait for the download to start.");
