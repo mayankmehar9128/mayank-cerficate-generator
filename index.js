@@ -196,7 +196,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
     
 
     firstPg.drawImage(uploadedImage, {
-        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 118,
+        x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 115,
         y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 280,
         width: uploadedImageDims.width,
         height: uploadedImageDims.height,
